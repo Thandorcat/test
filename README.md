@@ -43,4 +43,18 @@ Config page
 
 ## Create trigger with Severity HIGH, check if it works (Problem/Recovery)
 
+<img src="pictures/Screenshot from 2017-07-24 18-00-25.png">
+
+<img src="pictures/Screenshot from 2017-07-24 15-33-49.png">
+
+<img src="pictures/Screenshot from 2017-07-24 18-04-45.png">
+
+<img src="pictures/Screenshot from 2017-07-24 18-04-45.png">
+
 ## Create Action to inform “Project Owners” if HIGH triggers happen
+
+<img src="pictures/Screenshot from 2017-07-24 15-56-50.png">
+
+<img src="pictures/Screenshot from 2017-07-24 15-56-04.png">
+
+<img src="pictures/Screenshot from 2017-07-24 16-17-05.png">
