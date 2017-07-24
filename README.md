@@ -33,6 +33,14 @@ Config page
 
 ## Create custom checks (CPU Load, Memory load, Free space on file systems, Network load)
 
+<img src="pictures/Screenshot from 2017-07-24 17-29-29.png">
+
+<img src="pictures/Screenshot from 2017-07-24 17-31-57.png">
+
+<img src="pictures/Screenshot from 2017-07-24 17-36-53.png">
+
+<img src="pictures/Screenshot from 2017-07-24 18-39-45.png">
+
 ## Create trigger with Severity HIGH, check if it works (Problem/Recovery)
 
 ## Create Action to inform “Project Owners” if HIGH triggers happen
