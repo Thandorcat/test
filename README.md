@@ -21,7 +21,15 @@ Config page
 
 ## Add 2nd VM to zabbix: create Host group (“Project Hosts”), create Host in this group, enable ZABBIX Agent monitoring
 
+<img src="pictures/Screenshot from 2017-07-24 14-33-09.png">
+
+<img src="pictures/Screenshot from 2017-07-24 14-38-20.png">
+
 ## Assign to this host template of Linux 
+
+<img src="pictures/Screenshot from 2017-07-24 14-39-38.png">
+
+<img src="pictures/Screenshot from 2017-07-24 14-42-48.png">
 
 ## Create custom checks (CPU Load, Memory load, Free space on file systems, Network load)
 
