@@ -72,3 +72,19 @@ Config page
 <img src="pictures/Screenshot from 2017-07-24 16-49-41.png">
 
 <img src="pictures/Screenshot from 2017-07-24 16-51-36.png">
+
+# 4. Task 3:
+
+## Use zabbix_sender to send data to server manually (use zabbix_sender with key –vv for maximal verbosity).
+
+<img src="pictures/Screenshot from 2017-07-24 18-59-26.png">
+
+<img src="pictures/Screenshot from 2017-07-24 18-59-21.png">
+
+## Use zabbix_get as data receiver.
+
+<img src="pictures/Screenshot from 2017-07-24 19-15-23.png">
+
+<img src="pictures/Screenshot from 2017-07-24 19-16-14.png">
+
+<img src="pictures/Screenshot from 2017-07-24 19-16-06.png">
