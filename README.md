@@ -58,3 +58,17 @@ Config page
 <img src="pictures/Screenshot from 2017-07-24 15-56-04.png">
 
 <img src="pictures/Screenshot from 2017-07-24 16-17-05.png">
+
+<img src="pictures/Screenshot from 2017-07-24 18-26-38.png">
+
+# 3. Task 2:
+
+## Configure “Network discovery” so that, 2nd VM will be joined to Zabbix (group “Project Hosts”, Template “Template OS Linux”)
+
+<img src="pictures/Screenshot from 2017-07-24 16-32-07.png">
+
+<img src="pictures/Screenshot from 2017-07-24 16-48-05.png">
+
+<img src="pictures/Screenshot from 2017-07-24 16-49-41.png">
+
+<img src="pictures/Screenshot from 2017-07-24 16-51-36.png">
