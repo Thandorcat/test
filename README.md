@@ -10,7 +10,14 @@ Config page
 
 ## Create User group “Project Owners” 
 
+<img src="pictures/Screenshot from 2017-07-24 13-44-24.png">
+
 ## Create User (example “Siarhei Beliakou”), assign user to “Project Owners”, set email
+
+<img src="pictures/Screenshot from 2017-07-24 13-45-37.png">
+
+<img src="pictures/Screenshot from 2017-07-24 13-47-28.png">
+
 
 ## Add 2nd VM to zabbix: create Host group (“Project Hosts”), create Host in this group, enable ZABBIX Agent monitoring
 
