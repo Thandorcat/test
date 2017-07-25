@@ -93,79 +93,151 @@ Results:
 
 <img src="pictures/Screenshot from 2017-07-25 16-27-10.png">
 
-## Create User (example “Siarhei Beliakou”), assign user to “Project Owners”, set email
+# 2. Configure Triggers to alert once WEB resources become unavailable
 
-<img src="pictures/Screenshot from 2017-07-24 13-45-37.png">
+Creating trigger
 
-<img src="pictures/Screenshot from 2017-07-24 13-47-28.png">
+<img src="pictures/Screenshot from 2017-07-25 16-33-04.png">
+
+After stoping tomcat
+
+<img src="pictures/Screenshot from 2017-07-25 16-34-17.png">
+
+#  Task. Zabbix Zabbix API
+
+```python
+import requests, json, sys
+from requests.auth import HTTPBasicAuth
+
+zabbix_server = sys.argv[1]#"192.168.56.101/zabbix"
+zabbix_api_admin_name = sys.argv[2]#"Admin"
+zabbix_api_admin_password = sys.argv[3]#"zabbix"
+group_name = sys.argv[4]#"CloudHosts"
+template_name = sys.argv[5]#"Custom template"
+host_name = sys.argv[6]#"Hostname"
+host_ip = sys.argv[7]#"192.168.56.111"
+
+def post(request):
+    headers = {'content-type': 'application/json'}
+    return requests.post(
+        "http://" + zabbix_server + "/api_jsonrpc.php",
+         data=json.dumps(request),
+         headers=headers,
+         auth=HTTPBasicAuth(zabbix_api_admin_name, zabbix_api_admin_password)
+    )
+
+auth_token = post({
+    "jsonrpc": "2.0",
+    "method": "user.login",
+    "params": {
+         "user": zabbix_api_admin_name,
+         "password": zabbix_api_admin_password
+     },
+    "auth": None,
+    "id": 0}
+).json()["result"]
 
 
-## Add 2nd VM to zabbix: create Host group (“Project Hosts”), create Host in this group, enable ZABBIX Agent monitoring
+def register_host(hostname, ip, group, template):
+    return post({
+        "jsonrpc": "2.0",
+        "method": "host.create",
+        "params": {
+            "host": hostname,
+            "templates": [{
+                "templateid": template
+            }],
+            "interfaces": [{
+                "type": 1,
+                "main": 1,
+                "useip": 1,
+                "ip": ip,
+                "dns": "",
+                "port": "10050"
+            }],
+            "groups": [
+                {"groupid": group}
+            ]
+        },
+        "auth": auth_token,
+        "id": 1
+    })
 
-<img src="pictures/Screenshot from 2017-07-24 14-33-09.png">
+def check_group(name):
+    reply = post({
+        "jsonrpc": "2.0",
+        "method": "hostgroup.get",
+        "params": {
+            "output": "extend",
+            "filter": {
+                "name": name
+            }
+        },
+        "auth": auth_token,
+        "id": 1
+    }).json()["result"]
+    if reply.__len__() > 0:
+        return int(reply[0]['groupid'])
+    else: return False
 
-<img src="pictures/Screenshot from 2017-07-24 14-38-20.png">
+def check_template(name):
+    reply = post({
+        "jsonrpc": "2.0",
+        "method": "template.get",
+        "params": {
+            "output": "extend",
+            "filter": {
+                "name": name
+            }
+        },
+        "auth": auth_token,
+        "id": 1
+    }).json()["result"]
+    if reply.__len__() > 0:
+        return int(reply[0]['templateid'])
+    else: return False
 
-## Assign to this host template of Linux 
+def create_group(name):
+    return int(post({
+        "jsonrpc": "2.0",
+        "method": "hostgroup.create",
+        "params": {
+            "name": name
+        },
+        "auth": auth_token,
+        "id": 1
+    }).json()["result"]['groupids'][0])
 
-<img src="pictures/Screenshot from 2017-07-24 14-39-38.png">
+def create_template(name, group):
+    return int(post({
+        "jsonrpc": "2.0",
+        "method": "template.create",
+        "params": {
+            "host": name,
+            "groups": {
+                "groupid": group
+            }
+        },
+        "auth": auth_token,
+        "id": 1
+    }).json()["result"]['templateids'][0])
 
-<img src="pictures/Screenshot from 2017-07-24 14-42-48.png">
+group_id = check_group(group_name)
+if group_id == False:
+    group_id = create_group(group_name)
+    print "Group", group_name,"created"
 
-## Create custom checks (CPU Load, Memory load, Free space on file systems, Network load)
 
-<img src="pictures/Screenshot from 2017-07-24 17-29-29.png">
+template_id = check_template(template_name)
+if template_id == False:
+    template_id = create_template(template_name, group_id)
+    print "Template", template_name, "created"
 
-<img src="pictures/Screenshot from 2017-07-24 17-31-57.png">
+result = register_host(host_name, host_ip, group_id, template_id).json()
 
-<img src="pictures/Screenshot from 2017-07-24 17-36-53.png">
+if 'error' in result:
+    print "Error!!!:", result['error']['data']
+else:
+    print "Host", host_name, "with ip", host_ip, "and template", template_name, "created and added to group", group_name
+```
 
-<img src="pictures/Screenshot from 2017-07-24 18-39-45.png">
-
-## Create trigger with Severity HIGH, check if it works (Problem/Recovery)
-
-<img src="pictures/Screenshot from 2017-07-24 18-00-25.png">
-
-<img src="pictures/Screenshot from 2017-07-24 15-33-49.png">
-
-<img src="pictures/Screenshot from 2017-07-24 18-04-45.png">
-
-<img src="pictures/Screenshot from 2017-07-24 18-04-45.png">
-
-## Create Action to inform “Project Owners” if HIGH triggers happen
-
-<img src="pictures/Screenshot from 2017-07-24 15-56-50.png">
-
-<img src="pictures/Screenshot from 2017-07-24 15-56-04.png">
-
-<img src="pictures/Screenshot from 2017-07-24 16-17-05.png">
-
-<img src="pictures/Screenshot from 2017-07-24 18-26-38.png">
-
-# 3. Task 2:
-
-## Configure “Network discovery” so that, 2nd VM will be joined to Zabbix (group “Project Hosts”, Template “Template OS Linux”)
-
-<img src="pictures/Screenshot from 2017-07-24 16-32-07.png">
-
-<img src="pictures/Screenshot from 2017-07-24 16-48-05.png">
-
-<img src="pictures/Screenshot from 2017-07-24 16-49-41.png">
-
-<img src="pictures/Screenshot from 2017-07-24 16-51-36.png">
-
-# 4. Task 3:
-
-## Use zabbix_sender to send data to server manually (use zabbix_sender with key –vv for maximal verbosity).
-
-<img src="pictures/Screenshot from 2017-07-24 18-59-26.png">
-
-<img src="pictures/Screenshot from 2017-07-24 18-59-21.png">
-
-## Use zabbix_get as data receiver.
-
-<img src="pictures/Screenshot from 2017-07-24 19-15-23.png">
-
-<img src="pictures/Screenshot from 2017-07-24 19-16-14.png">
-
-<img src="pictures/Screenshot from 2017-07-24 19-16-06.png">
