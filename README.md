@@ -1,8 +1,46 @@
 #  Task. Zabbix. Java Monitoring with Java
 
-[a relative link](../blob/master/pictures/Screenshot from 2017-07-25 14-13-27.png)
+## Vagrantfile:
 
-[a link](pictures/Screenshot from 2017-07-25 16-11-18.png)
+```ruby
+Vagrant.configure("2") do |config|
+  config.vm.define "zabbix" do |zabbix|
+    zabbix.vm.box = "zabbix"
+    zabbix.vm.hostname = 'zabbix'
+    zabbix.vm.box_url = "sbeliakou-vagrant-centos-7.3-x86_64-minimal.box"
+    zabbix.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
+    zabbix.vm.network :private_network, ip: "192.168.56.101"
+    zabbix.vm.synced_folder "share/", "/share"
+    zabbix.vm.provider :virtualbox do |v|
+      v.memory = "4096"
+      v.name = "zabbixVM"
+    end
+    zabbix.vm.provision "shell", inline: <<-SHELL
+    sudo su
+    chmod +x /share/scripts/server.sh
+    /share/scripts/server.sh
+    SHELL
+  end
+
+  config.vm.define "agent" do |agent|
+    agent.vm.box = "agent"
+    agent.vm.hostname = 'agent'
+    agent.vm.box_url = "sbeliakou-vagrant-centos-7.3-x86_64-minimal.box"
+    agent.vm.network :private_network, ip: "192.168.56.111"
+    agent.vm.synced_folder "share/", "/share"
+    agent.vm.provider :virtualbox do |v|
+      v.memory = "2048"
+      v.name = "agent"
+    end
+    agent.vm.provision "shell", inline: <<-SHELL
+    sudo su
+    chmod +x /share/scripts/agent.sh
+    /share/scripts/agent.sh
+    SHELL
+  end
+
+end
+```
 
 # 1.You should install and configure Zabbix server
 
