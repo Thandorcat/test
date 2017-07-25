@@ -41,13 +41,23 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+# 1. Configure Zabbix to examine Java parameters via Java Gateway
 
-# 1.You should install and configure Zabbix server
+<img src="pictures/Screenshot from 2017-07-25 14-13-27.png">
+Connecting via terminal
 
-<img src="pictures/Screenshot from 2017-07-24 12-40-12.png">
+<img src="pictures/Screenshot from 2017-07-25 14-23-13.png">
 
-Config page
- 
+<img src="pictures/Screenshot from 2017-07-25 15-54-31.png">
+
+<img src="pictures/Screenshot from 2017-07-25 15-54-36.png">
+
+<img src="pictures/Screenshot from 2017-07-25 15-54-50.png">
+
+<img src="pictures/Screenshot from 2017-07-25 15-55-00.png">
+
+<img src="pictures/Screenshot from 2017-07-25 16-00-56.png">
+
 # 2. Task 1:
 
 ## Create User group “Project Owners” 
