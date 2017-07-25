@@ -1,4 +1,6 @@
-#  Task. Zabbix. Basics
+#  Task. Zabbix. Java Monitoring with Java
+
+[a link](pictures/Screenshot from 2017-07-25 16-11-18.png)
 
 # 1.You should install and configure Zabbix server
 
