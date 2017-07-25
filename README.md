@@ -43,20 +43,19 @@ end
 ```
 # 1. Configure Zabbix to examine Java parameters via Java Gateway
 
-<img src="pictures/Screenshot from 2017-07-25 14-13-27.png">
 Connecting via terminal
 
+<img src="pictures/Screenshot from 2017-07-25 14-13-27.png">
 
-<img src="pictures/Screenshot from 2017-07-25 15-54-31.png">
 Setting host
 
+<img src="pictures/Screenshot from 2017-07-25 15-54-31.png">
 
-<img src="pictures/Screenshot from 2017-07-25 15-54-36.png">
 Connected
 
+<img src="pictures/Screenshot from 2017-07-25 15-54-36.png">
 
 Custom items:
-
 
 <img src="pictures/Screenshot from 2017-07-25 15-54-50.png">
 
@@ -66,16 +65,33 @@ Custom items:
 
 # 2. Configure triggers to alert once these parameters changed
 
-<img src="pictures/Screenshot from 2017-07-25 16-09-56.png">
 Creating trigger
 
+<img src="pictures/Screenshot from 2017-07-25 16-09-56.png">
 
-<img src="pictures/Screenshot from 2017-07-25 16-11-18.png"
 Warning after creating CPU load
 
-## Create User group “Project Owners” 
+<img src="pictures/Screenshot from 2017-07-25 16-11-18.png"
 
-<img src="pictures/Screenshot from 2017-07-24 13-44-24.png">
+#  Task. Zabbix. Web Monitoring with Zabbix
+
+## 1. Configure WEB check
+
+Tomcat web face:
+
+<img src="pictures/Screenshot from 2017-07-25 16-21-26.png">
+
+Web app:
+
+<img src="pictures/Screenshot from 2017-07-25 16-22-58.png">
+
+Total:
+
+<img src="pictures/Screenshot from 2017-07-25 16-27-44.png">
+
+Results:
+
+<img src="pictures/Screenshot from 2017-07-25 16-27-10.png">
 
 ## Create User (example “Siarhei Beliakou”), assign user to “Project Owners”, set email
 
