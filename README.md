@@ -54,7 +54,10 @@ Setting host
 <img src="pictures/Screenshot from 2017-07-25 15-54-36.png">
 Connected
 
+
 Custom items:
+
+
 <img src="pictures/Screenshot from 2017-07-25 15-54-50.png">
 
 <img src="pictures/Screenshot from 2017-07-25 15-55-00.png">
