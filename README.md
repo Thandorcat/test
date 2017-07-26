@@ -71,6 +71,8 @@ CPU Load per Core (1min)
 
 <img src="pictures/Screenshot from 2017-07-26 15-14-13.png">
 
+<img src="pictures/Screenshot from 2017-07-26 15-13-40.png">
+
 CPU Load per Core (5min)
 
 <img src="pictures/Screenshot from 2017-07-26 15-17-14.png">
@@ -78,3 +80,34 @@ CPU Load per Core (5min)
 CPU Load per Core (15min)
 
 <img src="pictures/Screenshot from 2017-07-26 15-18-59.png">
+
+# 3. Internal Checks:
+
+How many items are enabled:
+
+<img src="pictures/Screenshot from 2017-07-26 15-39-41.png">
+
+How many Servers are being monitored:
+
+<img src="pictures/Screenshot from 2017-07-26 15-42-50.png">
+
+<img src="pictures/Screenshot from 2017-07-26 15-44-26.png">
+
+# 4. Create triggers for every check
+
+# 5. Logs
+
+Create item and develop custom trigger for log monitoring:
+
+<img src="pictures/Screenshot from 2017-07-26 14-57-17.png">
+
+Create a trigger for errors in log file monitored by that item:
+
+<img src="pictures/Screenshot from 2017-07-26 16-10-16.png">
+
+Shutting down Tomcat:
+
+<img src="pictures/Screenshot from 2017-07-26 15-26-46.png">
+
+
+
