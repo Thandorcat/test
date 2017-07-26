@@ -41,7 +41,7 @@ end
 ```
 #  Task. Zabbix. Items
 
-# 1. Simple checks:
+## 1. Simple checks:
 
 Zabbix Server WEB availability
 
@@ -61,7 +61,7 @@ Tomcat Server is available by ssh
 
 <img src="pictures/Screenshot from 2017-07-26 17-43-33.png">
 
-# 2. Calculated Checks:
+## 2. Calculated Checks:
 
 <img src="pictures/Screenshot from 2017-07-26 15-14-19.png">
 
@@ -81,7 +81,7 @@ CPU Load per Core (15min)
 
 <img src="pictures/Screenshot from 2017-07-26 15-18-59.png">
 
-# 3. Internal Checks:
+## 3. Internal Checks:
 
 How many items are enabled:
 
@@ -93,9 +93,17 @@ How many Servers are being monitored:
 
 <img src="pictures/Screenshot from 2017-07-26 15-44-26.png">
 
-# 4. Create triggers for every check
+## 4. Create triggers for every check
 
-# 5. Logs
+<img src="pictures/Screenshot from 2017-07-26 16-10-16.png">
+
+<img src="pictures/Screenshot from 2017-07-26 16-11-16.png">
+
+<img src="pictures/Screenshot from 2017-07-26 16-13-11.png">
+
+<img src="pictures/Screenshot from 2017-07-26 16-21-58.png">
+
+## 5. Logs
 
 Create item and develop custom trigger for log monitoring:
 
@@ -110,4 +118,22 @@ Shutting down Tomcat:
 <img src="pictures/Screenshot from 2017-07-26 15-26-46.png">
 
 
+#  Task. Zabbix. Operations
 
+## 1. Configure Custom graphs and screens of your infrastructure
+
+Graph
+
+<img src="pictures/Screenshot from 2017-07-26 17-15-30.png">
+
+Screens:
+
+<img src="pictures/Screenshot from 2017-07-26 17-15-07.png">
+
+## 2. Maintenance
+
+<img src="pictures/Screenshot from 2017-07-26 16-33-31.png">
+
+<img src="pictures/Screenshot from 2017-07-26 16-33-02.png">
+
+<img src="pictures/Screenshot from 2017-07-26 16-44-28.png">
