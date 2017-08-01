@@ -105,7 +105,8 @@ ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 
   - name: Download Tomcat
     get_url:
-      url: http://archive.apache.org/dist/tomcat/tomcat-8/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz
+      url: http://archive.apache.org/dist/tomcat/
+      tomcat-8v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz
       dest: ./
  
   - name: Unpack Tomcat
@@ -147,13 +148,22 @@ ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
       name: tomcat
 
   - name: Check via curl
-    shell: if [[ $(curl -IL localhost:8080 | grep "200 OK" )  > 0 ]] ; then echo Success! ; else echo Failed! ; fi
+    shell: if [[ $(curl -IL localhost:8080 | grep "200 OK" )  > 0 ]] ;
+      then echo Success! ;
+      else echo Failed! ; 
+      fi
 
   - name: Check via pgrep
-    shell: if [[ $(pgrep java)  > 0 ]] ; then echo Success! ; else echo Failed! ; fi
+    shell: if [[ $(pgrep java)  > 0 ]] ;
+      then echo Success! ; 
+      else echo Failed! ;
+      fi
 
   - name: Check service
-    shell: if [[ $(systemctl status tomcat | grep "active (running)" )  > 0 ]] ; then echo $(systemctl status tomcat | grep active) ; else echo "Service not active" ; fi
+    shell: if [[ $(systemctl status tomcat | grep "active (running)" )  > 0 ]] ;
+      then echo $(systemctl status tomcat | grep active) ;
+      else echo "Service not active" ;
+      fi
 ```
 
 
