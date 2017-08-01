@@ -57,22 +57,22 @@ ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 
 ## 6. Develop a playbook (name: tomcat_provision.yml) which is supposed to run against any host (specified in inventory)
 ### Use following modules (at least):
-### - copy
-### - file
-### - get_url
-### - group
-### - service
-### - shell
-### - unarchive
-### - user
-### - yum
+#### - copy
+#### - file
+#### - get_url
+#### - group
+#### - service
+#### - shell
+#### - unarchive
+#### - user
+#### - yum
 ### Define play variables (at least):
-### - tomcat_version
-### - java_version
+#### - tomcat_version
+#### - java_version
 ### Every task should have a name section with details of task purpose.
 ### Examples:
-### - name: Ensure user student exists
-### - name: Fetch artifact form the Shared repository
+#### - name: Ensure user student exists
+#### - name: Fetch artifact form the Shared repository
 ### Ensure tomcat is up and running properly with module “shell” (at least 3 different checks).
 ### Second (and other) run(s) of playbook shouldn’t interrupt the service – one of checks should show tomcat uptime.
 
