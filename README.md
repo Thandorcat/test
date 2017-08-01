@@ -29,6 +29,7 @@ end
 ### - Connection type
 ```
 [all]
-127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user=vagrant ansible_connection=ssh ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user=vagrant ansible_connection=ssh
+ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 ```
 
