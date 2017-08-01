@@ -76,3 +76,80 @@ ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 ### Ensure tomcat is up and running properly with module “shell” (at least 3 different checks).
 ### Second (and other) run(s) of playbook shouldn’t interrupt the service – one of checks should show tomcat uptime.
 
+```yaml
+- name: Tomcat provision
+  hosts: all
+  become: true
+  become_user: root
+
+  vars:
+    tomcat_version: 8.0.35
+    java_version: 1.8
+  tasks:
+
+  - name: Install Java {{java_version}}
+    yum:
+      name: java-devel
+
+  - name: Creating tomcat group
+    group:
+      name: tomcat_as_group
+
+  - name: Creating tomcat user
+    user:
+      name: tomcat_as
+      group: tomcat_as_group
+
+  - name: Download Tomcat
+    get_url:
+      url: http://archive.apache.org/dist/tomcat/tomcat-8/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz
+      dest: ./
+ 
+  - name: Unpack Tomcat
+    unarchive:
+      remote_src: true
+      src: apache-tomcat-{{tomcat_version}}.tar.gz
+      dest: ./
+
+  - name: Creating directory
+    file:
+      path: /opt/tomcat/{{tomcat_version}}
+      state: directory
+
+  - name: Copy Tomcat
+    shell: cp -R apache-tomcat-{{tomcat_version}}/* /opt/tomcat/{{tomcat_version}}/
+
+  - name: Setting permitions
+    file:
+      recurse: true
+      path: /opt/tomcat/{{tomcat_version}}/
+      owner: tomcat_as
+      group: tomcat_as_group
+
+  - name: Copy Tomcat Service file
+    copy:
+      src: tomcat.service
+      dest: /etc/systemd/system/tomcat.service
+
+  - name: Fix Tomcat Service file
+    replace:
+      path: /etc/systemd/system/tomcat.service
+      regexp: '{version}'
+      replace: '{{tomcat_version}}'
+
+  - name: Start Tomcat
+    service:
+      state: started
+      enabled: true
+      name: tomcat
+
+  - name: Check via curl
+    shell: if [[ $(curl -IL localhost:8080 | grep "200 OK" )  > 0 ]] ; then echo Success! ; else echo Failed! ; fi
+
+  - name: Check via pgrep
+    shell: if [[ $(pgrep java)  > 0 ]] ; then echo Success! ; else echo Failed! ; fi
+
+  - name: Check service
+    shell: if [[ $(systemctl status tomcat | grep "active (running)" )  > 0 ]] ; then echo $(systemctl status tomcat | grep active) ; else echo "Service not active" ; fi
+```
+
