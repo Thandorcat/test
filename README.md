@@ -33,3 +33,25 @@ end
 ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 ```
 
+## 5. Test ansible connectivity to the VM with ad-hoc command: 
+
+<img src="pictures/Screenshot from 2017-08-01 13-25-47.png">
+
+### Find out host details:
+
+### - Number of CPUs
+
+<img src="pictures/Screenshot from 2017-08-01 13-35-52.png">
+
+### - Host name
+
+<img src="pictures/Screenshot from 2017-08-01 13-38-20.png">
+
+### - Host IP(s)
+
+<img src="pictures/Screenshot from 2017-08-01 13-55-36.png">
+
+### - Total RAM
+
+<img src="pictures/Screenshot from 2017-08-01 14-00-11.png">
+
