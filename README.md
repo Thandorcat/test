@@ -76,6 +76,9 @@ ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 ### Ensure tomcat is up and running properly with module “shell” (at least 3 different checks).
 ### Second (and other) run(s) of playbook shouldn’t interrupt the service – one of checks should show tomcat uptime.
 
+
+### tomcat_provision.yml:
+
 ```yaml
 - name: Tomcat provision
   hosts: all
@@ -153,3 +156,10 @@ ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
     shell: if [[ $(systemctl status tomcat | grep "active (running)" )  > 0 ]] ; then echo $(systemctl status tomcat | grep active) ; else echo "Service not active" ; fi
 ```
 
+
+## 7. Software installation requirements:
+### - Tomcat AS should be installed from sources (tar.gz) – download from the official site (http://archive.apache.org/dist/tomcat/).
+### - Tomcat AS should be owned (and run) by user tomcat_as:tomcat_as_group
+### - Tomcat AS version should be 8.x
+### - Tomcat installation folder (CATALINA_HOME) is /opt/tomcat/$version, where $version is the version of tomcat defined in playbook
+### - Java can be installed from CentOS Repositories
