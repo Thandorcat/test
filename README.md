@@ -148,22 +148,47 @@ ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
       name: tomcat
 
   - name: Check via curl
-    shell: if [[ $(curl -IL localhost:8080 | grep "200 OK" )  > 0 ]] ;
-      then echo Success! ;
-      else echo Failed! ; 
+    shell: if [[ $(curl -IL localhost:8080 | grep "200 OK" )  > 0 ]] ; \
+      then echo Success! ; \
+      else echo Failed! ; \
       fi
 
   - name: Check via pgrep
-    shell: if [[ $(pgrep java)  > 0 ]] ;
-      then echo Success! ; 
-      else echo Failed! ;
+    shell: if [[ $(pgrep java)  > 0 ]] ; \
+      then echo Success! ;  \
+      else echo Failed! ; \
       fi
 
   - name: Check service
-    shell: if [[ $(systemctl status tomcat | grep "active (running)" )  > 0 ]] ;
-      then echo $(systemctl status tomcat | grep active) ;
-      else echo "Service not active" ;
+    shell: if [[ $(systemctl status tomcat | grep "active (running)" )  > 0 ]] ; \
+      then echo $(systemctl status tomcat | grep active) ; \
+      else echo "Service not active" ; \
       fi
+```
+
+### tomcat.service:
+
+```
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME=/usr/lib/jvm/jre
+Environment=CATALINA_PID=/opt/tomcat/{version}/temp/tomcat.pid
+Environment=CATALINA_HOME=/opt/tomcat/{version}
+Environment=CATALINA_BASE=/opt/tomcat/{version}
+
+ExecStart=/opt/tomcat/{version}/bin/startup.sh
+ExecStop=/opt/tomcat/{version}/bin/shutdown.sh
+
+User=tomcat_as
+Group=tomcat_as_group
+
+[Install]
+WantedBy=multi-user.target
 ```
 
 
