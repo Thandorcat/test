@@ -158,8 +158,21 @@ ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 
 
 ## 7. Software installation requirements:
-### - Tomcat AS should be installed from sources (tar.gz) – download from the official site (http://archive.apache.org/dist/tomcat/).
-### - Tomcat AS should be owned (and run) by user tomcat_as:tomcat_as_group
-### - Tomcat AS version should be 8.x
-### - Tomcat installation folder (CATALINA_HOME) is /opt/tomcat/$version, where $version is the version of tomcat defined in playbook
-### - Java can be installed from CentOS Repositories
+#### - Tomcat AS should be installed from sources (tar.gz) – download from the official site (http://archive.apache.org/dist/tomcat/).
+#### - Tomcat AS should be owned (and run) by user tomcat_as:tomcat_as_group
+#### - Tomcat AS version should be 8.x
+#### - Tomcat installation folder (CATALINA_HOME) is /opt/tomcat/$version, where $version is the version of tomcat defined in playbook
+#### - Java can be installed from CentOS Repositories
+
+<img src="pictures/Screenshot from 2017-08-01 18-55-01.png">
+
+
+## 8. Verification Procedure: playbook will be checked by instructor’s CI system as follows:
+#### 8.1 Connect to student’s host by ssh (username “student”) with own ssh key.
+#### 8.2 Check the version of ansible installed on the system (as mentioned in point 1)
+#### 8.3 Go into the folder mentioned in point 2
+#### 8.4 Destroy/Launch VM: vagrant destroy && vagrant up
+#### 8.5 Execute VM provisioning: ansible-playbook tomcat_provision.yml -i inventory -vv 
+#### 8.6 If previous steps are done successfully, instructor will check the report
+
+<img src="pictures/Screenshot from 2017-08-01 19-01-18.png">
