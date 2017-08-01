@@ -24,9 +24,9 @@ end
 <img src="pictures/Screenshot from 2017-08-01 12-40-21.png">
 
 ## 4. Create ansible inventory file (name: inventory) with remote host connection details:
-### Remote VM hostname/ip/port
-### Remote ssh login username
-### Connection type
+### - Remote VM hostname/ip/port
+### - Remote ssh login username
+### - Connection type
 
 ### [all]
 ### 127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user=vagrant ansible_connection=ssh ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
